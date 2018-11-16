@@ -3,6 +3,8 @@
 This is an example of a target generator example for [`vegeta` load test](https://github.com/tsenart/vegeta). 
 It uses `FsCheck` to generate arbitrary data and construct a target for `vegeta`.
 
+The `run.cmd` script assumes running on Windows with `dotnet` available.
+
 ## How to use it
 
 1. Download `vegeta` from the repository release
