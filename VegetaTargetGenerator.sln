@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "VegetaTargetGenerator", "VegetaTargetGenerator\VegetaTargetGenerator.fsproj", "{A657781B-E950-4F37-A11F-F97B897ED3C8}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TestWebServer", "TestWebServer\TestWebServer.fsproj", "{1D4D200A-B373-4DC0-8BC5-A1EEAB31DEE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A657781B-E950-4F37-A11F-F97B897ED3C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A657781B-E950-4F37-A11F-F97B897ED3C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A657781B-E950-4F37-A11F-F97B897ED3C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D4D200A-B373-4DC0-8BC5-A1EEAB31DEE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D4D200A-B373-4DC0-8BC5-A1EEAB31DEE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D4D200A-B373-4DC0-8BC5-A1EEAB31DEE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D4D200A-B373-4DC0-8BC5-A1EEAB31DEE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
