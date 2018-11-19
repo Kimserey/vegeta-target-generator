@@ -3,14 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "VegetaTargetGenerator", "VegetaTargetGenerator\VegetaTargetGenerator.fsproj", "{A657781B-E950-4F37-A11F-F97B897ED3C8}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "VegetaTargetGenerator", "src\VegetaTargetGenerator\VegetaTargetGenerator.fsproj", "{A657781B-E950-4F37-A11F-F97B897ED3C8}"
 EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "TestWebServer", "TestWebServer\TestWebServer.fsproj", "{1D4D200A-B373-4DC0-8BC5-A1EEAB31DEE6}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "TestWebServer", "src\TestWebServer\TestWebServer.fsproj", "{1D4D200A-B373-4DC0-8BC5-A1EEAB31DEE6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A86FDE1C-9F7E-4CD1-8C50-16F407A24173}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
-		run.cmd = run.cmd
+		src\run.cmd = src\run.cmd
 	EndProjectSection
 EndProject
 Global
