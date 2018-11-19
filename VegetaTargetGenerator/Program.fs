@@ -6,16 +6,18 @@ open System.Text
 
 type Target =
     {
-        url: string;
-        method: string;
-        body: string;
+        url: string
+        method: string
+        body: string
         header: Map<string, string list>
     }
 
 type Person =
     {
-        name: string;
+        name: string
     }
+
+open System.Collections.Concurrent
 
 [<EntryPoint>]
 let main argv =
