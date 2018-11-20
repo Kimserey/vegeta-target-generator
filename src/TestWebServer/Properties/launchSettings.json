@@ -2,7 +2,7 @@
   "profiles": {
     "TestWebServer": {
       "commandName": "Project",
-      "applicationUrl": "http://localhost:5000",
+      "applicationUrl": "http://172.22.88.177:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

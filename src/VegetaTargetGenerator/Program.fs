@@ -37,7 +37,7 @@ let main argv =
     |> List.map serialize
     |> List.map (fun b ->
         {
-            url = "http://localhost:5000/Persons";
+            url = "http://172.22.88.177:5000/Persons";
             method = "POST";
             body = base64 b;
             header = Map.ofList [( "Content-Type", [ "application/json" ] )]
