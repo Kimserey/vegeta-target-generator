@@ -17,8 +17,6 @@ type Person =
         name: string
     }
 
-open System.Collections.Concurrent
-
 [<EntryPoint>]
 let main argv =
     let (rate, duration) =
