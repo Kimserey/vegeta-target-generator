@@ -1,21 +1,6 @@
-﻿open FsCheck
-open Newtonsoft.Json
-open Newtonsoft.Json.Serialization
-open System
-open System.Text
-
-type Target =
-    {
-        url: string
-        method: string
-        body: string
-        header: Map<string, string list>
-    }
-
-type Person =
-    {
-        name: string
-    }
+﻿open System.Reflection
+open Utils
+open Types
 
 [<EntryPoint>]
 let main argv =
@@ -24,23 +9,26 @@ let main argv =
         | [|r; d|] -> (int32 r, int32 d)
         | _ -> failwith "Rate and duration (in seconds) must be specified."
 
-    let serialize data =
-        JsonConvert.SerializeObject(data, JsonSerializerSettings(ContractResolver = CamelCasePropertyNamesContractResolver()))
+    let find name =
+        let prop =
+            Assembly.GetExecutingAssembly().GetTypes()
+            |> Array.collect (fun t -> t.GetProperties(BindingFlags.Static ||| BindingFlags.Public))
+            |> Array.map (fun p -> p, p.GetCustomAttributes(typeof<TargetAttribute>, true))
+            |> Array.filter (fun (_, attrs) ->
+                attrs.Length > 0
+                && attrs |> Array.exists (fun a -> (a :?> TargetAttribute).name = name))
+            |> Array.tryHead
 
-    let base64 (data: string) =
-        Encoding.ASCII.GetBytes data |> Convert.ToBase64String
+        match prop with
+        | Some (prop, _) -> prop.GetValue(null) :?> Target
+        | None -> failwith <| sprintf "Failed to find target named '%s'." name
 
-    Arb.generate<Person>
-    |> Gen.sample 1000 (rate * duration)
-    |> List.map serialize
-    |> List.map (fun b ->
-        {
-            url = "http://172.22.88.177:5000/Persons";
-            method = "POST";
-            body = base64 b;
-            header = Map.ofList [( "Content-Type", [ "application/json" ] )]
-        })
-    |> List.map serialize
-    |> List.iter (printfn "%s")
+    let target =
+        find "person"
+
+    for  _ in 0.. rate* duration do
+        VegetaTarget.From target
+        |> serialize
+        |> printfn "%s"
 
     0
