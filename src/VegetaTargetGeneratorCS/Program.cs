@@ -19,11 +19,16 @@ namespace VegetaTargetGeneratorCS
             return Convert.ToBase64String(Encoding.ASCII.GetBytes(data));
         }
 
-        static ITarget FindTarget(string name)
+        static dynamic FindTarget(string assemblyPath, string name)
         {
             var target =
-                Assembly.GetExecutingAssembly().GetTypes()
-                    .Where(t => typeof(ITarget).IsAssignableFrom(t) && t.IsClass)
+                Assembly.LoadFrom(assemblyPath).GetTypes()
+                    .Where(t => t.IsClass
+                        && t.Name.EndsWith("Target")
+                        && t.GetProperty("Name") != null
+                        && t.GetProperty("Url") != null
+                        && t.GetProperty("Header") != null
+                        && t.GetMethod("MakeBody") != null)
                     .Select(t =>
                     {
                         var obj = Activator.CreateInstance(t);
@@ -39,15 +44,17 @@ namespace VegetaTargetGeneratorCS
                 throw new NotSupportedException("Target named " + name + " could not be found");
             }
 
-            return target as ITarget;
+            return target;
         }
 
         static void Main(string[] args)
         {
             var rate = Convert.ToInt32(args[0]);
             var duration = Convert.ToInt32(args[1]);
+            var assemblyPath = args[2];
+            var targetName = args[3];
 
-            var target = FindTarget("person");
+            var target = FindTarget(assemblyPath, targetName);
 
             for (int i = 0; i < rate * duration; i++)
             {
