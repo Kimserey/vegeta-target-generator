@@ -3,10 +3,10 @@
 open Types
 open FsCheck
 
-[<Target("person")>
+[<Target("person")>]
 let personTarget: Target =
     {
-        url = "http://localhost:5000/Persons"
+        url = "http://172.22.88.177:5000/Persons"
         method = "POST"
         makeBody = fun () ->
             Arb.generate<Person>
