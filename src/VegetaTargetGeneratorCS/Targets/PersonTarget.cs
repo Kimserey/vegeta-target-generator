@@ -4,6 +4,11 @@ using System.Linq;
 
 namespace VegetaTargetGeneratorCS.Targets
 {
+    public class Person
+    {
+        public string Name { get; set; }
+    }
+
     public class PersonTarget : ITarget
     {
         public string Name => "person";
