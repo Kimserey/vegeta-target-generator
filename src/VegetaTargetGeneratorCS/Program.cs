@@ -21,7 +21,7 @@ namespace VegetaTargetGeneratorCS
 
         static dynamic FindTarget(string assemblyPath, string name)
         {
-            var target =
+            var (target, typ) =
                 Assembly.LoadFrom(assemblyPath).GetTypes()
                     .Where(t => t.IsClass
                         && t.Name.EndsWith("Target")
@@ -33,15 +33,25 @@ namespace VegetaTargetGeneratorCS
                     {
                         var obj = Activator.CreateInstance(t);
                         var found = t.GetProperty("Name").GetValue(obj).ToString() == name;
-                        return (obj, found);
+                        return (obj, t, found);
                     })
                     .Where(res => res.found)
-                    .Select(res => res.obj)
+                    .Select(res => (res.obj, res.t))
                     .FirstOrDefault();
 
             if (target == null)
             {
                 throw new NotSupportedException("Target named " + name + " could not be found");
+            }
+
+            var loadAssemblies = typ.GetMethod("LoadAssemblies");
+            if (loadAssemblies != null)
+            {
+                var assemblies = (string[])typ.GetMethod("LoadAssemblies").Invoke(target, null);
+                foreach (var assembly in assemblies)
+                {
+                    Assembly.LoadFrom(assembly);
+                }
             }
 
             return target;
