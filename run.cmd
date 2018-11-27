@@ -1,1 +1,1 @@
-docker container run --rm -v c:/Projects/VegetaTargetGenerator/results:/results -e RATE=5 -e DURATION=10 --name vegeta vegeta
+docker container run --rm -v c:/Projects/VegetaTargetGenerator/results:/results -e TARGET=person -e RATE=5 -e DURATION=10 --name vegeta vegeta

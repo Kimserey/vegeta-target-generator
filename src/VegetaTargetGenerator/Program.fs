@@ -4,9 +4,9 @@ open Types
 
 [<EntryPoint>]
 let main argv =
-    let (rate, duration) =
+    let (target, rate, duration) =
         match argv with
-        | [|r; d|] -> (int32 r, int32 d)
+        | [|t; r; d|] -> (t, int32 r, int32 d)
         | _ -> failwith "Rate and duration (in seconds) must be specified."
 
     let find name =
@@ -24,7 +24,7 @@ let main argv =
         | None -> failwith <| sprintf "Failed to find target named '%s'." name
 
     let target =
-        find "person"
+        find target
 
     for  _ in 0.. rate* duration do
         VegetaTarget.From target

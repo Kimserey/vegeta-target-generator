@@ -1,9 +1,9 @@
 FROM microsoft/dotnet:sdk AS build-env
 WORKDIR /app
 
-COPY src/VegetaTargetGeneratorCS/*.csproj ./
+COPY src/VegetaTargetGenerator/*.fsproj ./
 RUN dotnet restore
-COPY src/VegetaTargetGeneratorCS/ ./
+COPY src/VegetaTargetGenerator/ ./
 RUN dotnet publish -c Release -o out
 
 COPY ./benchmark.sh ./out

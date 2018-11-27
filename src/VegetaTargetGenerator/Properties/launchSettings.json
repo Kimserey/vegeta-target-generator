@@ -2,7 +2,7 @@
   "profiles": {
     "VegetaTargetGenerator": {
       "commandName": "Project",
-      "commandLineArgs": "1 10"
+      "commandLineArgs": "person 1 10"
     }
   }
 }
