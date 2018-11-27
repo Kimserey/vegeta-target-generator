@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Vegeta": {
+      "commandName": "Project",
+      "commandLineArgs": "1 10 \"C:\\Projects\\VegetaTargetGenerator\\src\\VegetaTargetGenerator.Targets\\bin\\Debug\\netstandard2.0\\VegetaTargetGenerator.Targets.dll\" person"
+    }
+  }
+}

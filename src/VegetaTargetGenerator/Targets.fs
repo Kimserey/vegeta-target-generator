@@ -15,3 +15,11 @@ let personTarget: Target =
             |> box
         header = Map.ofList [( "Content-Type", [ "application/json" ] )]
     }
+
+let blogTarget: Target =
+    {
+        url = "http://172.22.88.177:5000/api/blogs"
+        method = "GET"
+        makeBody = fun () -> null
+        header = Map.ofList [( "Content-Type", [ "application/json" ] )]
+    }

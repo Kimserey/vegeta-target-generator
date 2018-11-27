@@ -26,7 +26,11 @@ type VegetaTarget =
         {
             url = target.url
             method = target.method
-            body = target.makeBody() |> serialize |> base64
+            body =
+                if target.method = "POST" then
+                    target.makeBody() |> serialize |> base64
+                else
+                    null
             header = target.header
         }
 
